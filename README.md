@@ -1,6 +1,8 @@
-# 连点器（Rust Auto Clicker）
+# Windows 自动连点器（Auto Clicker）
 
 一个用 **Rust** 编写的 Windows 鼠标 / 键盘自动连点工具，带有图形界面。你可以用它来自动重复点击鼠标、设置点击速度，并通过一个快捷键随时开启或停止，非常适合游戏刷图、重复操作、自动化测试等场景。
+
+> 仓库名：`windows-auto-clicker` ｜ 仅支持 Windows 系统。
 
 ## 项目介绍
 
@@ -94,6 +96,7 @@ A：图标由 `tools/make_icon.py` 生成 `assets/icon.ico`，界面布局在 `s
 
 ## 技术说明（简要）
 
+- 平台：Windows
 - 语言：Rust
 - 界面：`eframe` + `egui`
 - 全局热键：Windows **Raw Input**（`RegisterRawInputDevices` + `WM_INPUT`），相比传统低级键盘钩子，在窗口聚焦时也能可靠触发

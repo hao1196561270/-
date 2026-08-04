@@ -1,0 +1,37 @@
+[package]
+name = "auto_clicker"
+version = "0.1.0"
+edition = "2021"
+description = "Windows auto clicker with customizable toggle hotkey"
+
+[build-dependencies]
+winresource = "0.1"
+
+[dependencies]
+# 仅保留 glow 渲染后端。不启用 default_fonts：中文字体从系统加载，
+# 内置字体数据在本应用中完全冗余。
+eframe = { version = "0.28", default-features = false, features = ["glow"] }
+egui = { version = "0.28", default-features = false }
+
+[dependencies.windows]
+version = "0.58"
+features = [
+    "Win32_Foundation",
+    "Win32_UI_Input_KeyboardAndMouse",
+    "Win32_UI_WindowsAndMessaging",
+    "Win32_System_LibraryLoader",
+    "Win32_System_Threading",
+]
+
+[profile.release]
+opt-level = "z"     # 优先体积而非速度
+lto = "fat"         # 跨 crate 链接时优化，消除未使用代码
+codegen-units = 1   # 单编译单元，最大化优化机会
+strip = true        # 移除符号表与调试信息
+panic = "abort"     # 去掉展开表与 landing pad
+
+
+[lints.clippy]
+unwrap_used = "deny"
+expect_used = "deny"
+panic = "deny"

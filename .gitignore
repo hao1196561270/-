@@ -1,0 +1,8 @@
+# Rust 编译产物
+/target
+
+# 构建 / 测试 / lint 日志
+*.log
+
+# tools 下的临时调试文件
+tools/*.txt
